@@ -69,3 +69,8 @@ button:hover {
   background: #e74c3c;
   color: white;
 }
+
+.backspace {
+  background: gray;
+  color: white;
+}
