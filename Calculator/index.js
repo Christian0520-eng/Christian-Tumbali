@@ -1,29 +1,21 @@
-const num1 = document.getElementById("num1");
-const num2 = document.getElementById("num2");
-const result = document.getElementById("result");
+const display = document.getElementById("display");
 
-const addBtn = document.getElementById("addBtn");
-const subBtn = document.getElementById("subBtn");
-const mulBtn = document.getElementById("mulBtn");
-const divBtn = document.getElementById("divBtn");
+const buttons = document.querySelectorAll("button");
 
-addBtn.addEventListener("click", () => {
-  result.textContent = `Result: ${Number(num1.value) + Number(num2.value)}`;
-});
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const value = button.textContent;
 
-subBtn.addEventListener("click", () => {
-  result.textContent = `Result: ${Number(num1.value) - Number(num2.value)}`;
-});
-
-mulBtn.addEventListener("click", () => {
-  result.textContent = `Result: ${Number(num1.value) * Number(num2.value)}`;
-});
-
-divBtn.addEventListener("click", () => {
-  if (Number(num2.value) === 0) {
-    result.textContent = "Cannot divide by zero!";
-    return;
-  }
-
-  result.textContent = `Result: ${Number(num1.value) / Number(num2.value)}`;
+    if (value === "C") {
+      display.value = "";
+    } else if (value === "=") {
+      try {
+        display.value = eval(display.value);
+      } catch {
+        display.value = "Error";
+      }
+    } else {
+      display.value += value;
+    }
+  });
 });
